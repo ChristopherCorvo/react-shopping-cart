@@ -9,6 +9,7 @@ import data from './data';
 import Navigation from './components/Navigation';
 import Products from './components/Products';
 import ShoppingCart from './components/ShoppingCart';
+import Item from './components/ShoppingCartItem'
 
 // ------------ Import Context Objs ------------------
 import { ProductContext } from './context/ProductContext'
@@ -24,6 +25,12 @@ function App() {
 		setCart([...cart, item])
 	};
 
+	const removeItem = item => {
+		// // item is the id# of the item in cart
+		// setCart(cart.filter((cartItem) => cartItem.id) !== item)
+		console.log(cart)
+	}
+
 	return (
 		<div className="App">
 		{/* By wrapping all of the components in </ProductContext.Provider>	they will have 
@@ -31,7 +38,7 @@ function App() {
 
 		{/* The Provider method accepts a single prop called value, 
 		the value prop is used to provide our data across our app. */}
-		<CartContext.Provider value={cart}>
+		<CartContext.Provider value={{ cart, removeItem }}>
 			<ProductContext.Provider value={{products, addItem}}> 
 				<Navigation/>
 
@@ -43,6 +50,8 @@ function App() {
 				<Route path="/cart">
 					<ShoppingCart/>
 				</Route>
+
+				
 			</ProductContext.Provider>
 		</CartContext.Provider>		
 		</div>

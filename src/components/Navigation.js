@@ -10,6 +10,7 @@ import { CartContext } from '../context/CartContext';
 const Navigation = props => {
 	// this destructures the prop value that is being stored globally
 	const { cart } = useContext(CartContext)
+	console.log(cart)
 
 	return (
 		<div className="navigation">
